@@ -1,0 +1,37 @@
+
+ETAPAS 
+   
+    -- Models Ok
+    -- ViewModels (Testar com Configuração manual)
+    -- Anotações para Teste
+    -- Mapeamentos corrigidos
+  	-- Gerar Migration 
+    -- Realizar Criação do banco de dados   
+    - Criação dos Controllers
+        -- Controller 
+        -- Controller     
+            
+* GERAR SCAFFOLDING de CONTROLLERS E VIEWS ATRAVÉS DO TERMINAL | VISUAL STUDIO CODE
+
+    //Adicionar REFERÊNCIA do pacote ao projeto
+        dotnet add package Microsoft.VisualStudio.Web.CodeGeneration.Design 
+
+    //Visualizar possibilidades a serem utilizadas
+        dotnet-aspnet-codegenerator --help
+
+    //Comando para gerar CONTROLLER e VIEWS
+    //Mostrar todos os parâmetros possíveis para CONTROLLER
+        dotnet-aspnet-codegenerator controller --help
+    
+    //COMANDO PARA CRIAR O CONTROLLER
+        dotnet-aspnet-codegenerator controller -name CategoriaController -m Categoria -dc viewmodeldbcontexto -uld -outDir Controllers -scripts
+
+* GERAR BANCO DE DADOS ATRAVÉS DE MIGRATION. 
+
+    //Comando para gerar o script de criação de esquemas e tabelas descritas na classe contexto. 
+        dotnet ef migrations add 001
+    
+    //Criar o banco de dados pelo script gerado acima
+        dotnet ef database update
+    
+     
