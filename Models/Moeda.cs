@@ -11,6 +11,6 @@ namespace AspCoreGraficos.Models
         public int Quantidade { get; set; }
 
         [NotMapped]
-        public bool Checkboxmarcado { get; set; }
+        public bool CheckboxMarcado { get; set; }
     }
 }
