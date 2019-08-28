@@ -43,6 +43,7 @@ namespace AspCoreGraficos.Controllers
             return View(moeda);
         }
 
+        //IMPLEMENTAÇÃO
         public async Task<IActionResult> EscolhaMoedas(IList<Moeda> moedasParam)
         {
             foreach (var item in moedasParam)
@@ -59,6 +60,13 @@ namespace AspCoreGraficos.Controllers
             }
 
             return RedirectToAction(nameof(Index));
+        }
+
+
+        //IMPLEMENTAÇÃO
+        public JsonResult DadosGrafico()
+        {
+            return Json(_context.Moedas.Select(x => new {x.MoedaId, x.Nome}));
         }
 
         // GET: Moeda/Create
