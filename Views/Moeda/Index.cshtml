@@ -45,4 +45,82 @@
     <div class="col-lg-6 well" >
         @await Component.InvokeAsync("Moeda")
     </div>
+
+    <div>
+        <partial name="_Grafico" />
+    </div>
 </div>
+
+<script>
+
+    function pegarNomeMoeda(dados){
+        var quantidade = 0;
+        var moedas = [];
+
+        while (quantidade < dados.length)
+        {
+            moedas.push(dados[quantidade].nome);
+            quantidade++;
+
+        }
+
+        return moedas;
+    }
+
+    function pegarQuantidade(dados){
+
+        var quantidade = 0;
+        var valores = [];
+
+        while (quantidade < dados.length)
+        {
+            valores.push(dados[quantidade].quantidade);
+            quantidade++;
+        }
+
+        return valores;
+    }
+
+    function pegarCores(quantidade){
+
+        var cores = [];
+
+        while (quantidade > 0)
+        {
+            var r = Math.floor(Math.random() * 255);
+            var g = Math.floor(Math.random() * 255);
+            var b = Math.floor(Math.random() * 255);
+
+            cores.push("rgb(" + r + "," + g + "," + b + ")");
+
+            quantidade --;
+        }
+
+        return cores;
+    }
+
+    $.ajax({
+        type : "GET",
+        url : "Moeda/DadosGrafico",
+        success : function(dados){
+            new Chart(document.getElementById("grafico"), {
+                type: "pie",
+                data : {
+                    labels : pegarNomeMoeda(dados),
+                    datasets: [{
+                        labels : "Quantidade",
+                        borderWidth : 2,
+                        background : pegarCores(dados.length),
+                        data : PegarQuantidade(dados)
+                    }]
+                },
+                options : {
+                    title : {
+                        display : true,
+                        text : "Quantidade Moeda"                      
+                    }
+                }
+            });
+        }
+    })
+</script>
