@@ -43,6 +43,24 @@ namespace AspCoreGraficos.Controllers
             return View(moeda);
         }
 
+        public async Task<IActionResult> EscolhaMoedas(IList<Moeda> moedasParam)
+        {
+            foreach (var item in moedasParam)
+            {
+                if (item.CheckboxMarcado == true)
+                {
+                    Moeda varMoeda = await _context.Moedas.FirstAsync(x => x.MoedaId == item.MoedaId);
+                    varMoeda.Quantidade = varMoeda.Quantidade + 1;
+
+                    _context.Update(varMoeda);
+                    await _context.SaveChangesAsync();
+
+                }
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
         // GET: Moeda/Create
         public IActionResult Create()
         {
