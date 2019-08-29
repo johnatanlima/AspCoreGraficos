@@ -61,7 +61,6 @@
         {
             moedas.push(dados[quantidade].nome);
             quantidade++;
-
         }
 
         return moedas;
@@ -91,7 +90,7 @@
             var g = Math.floor(Math.random() * 255);
             var b = Math.floor(Math.random() * 255);
 
-            cores.push("rgb(" + r + "," + g + "," + b + ")");
+            cores.push("rgb(" + r + ", " + g + ", " + b + ")");
 
             quantidade --;
         }
@@ -100,27 +99,27 @@
     }
 
     $.ajax({
-        type : "GET",
-        url : "Moeda/DadosGrafico",
-        success : function(dados){
+        type: "GET",
+        url: "Moeda/DadosGrafico",
+        success: function (dados) {
             new Chart(document.getElementById("grafico"), {
-                type: "pie",
-                data : {
-                    labels : pegarNomeMoeda(dados),
+                type: 'pie',
+                data: {
+                    labels: pegarNomeMoeda(dados),
                     datasets: [{
-                        labels : "Quantidade",
-                        borderWidth : 2,
-                        background : pegarCores(dados.length),
-                        data : PegarQuantidade(dados)
+                        labels: "Quantidade",
+                        borderWidth: 2,
+                        backgroundColor: pegarCores(dados.length),
+                        data: PegarQuantidade(dados)
                     }]
                 },
-                options : {
-                    title : {
-                        display : true,
-                        text : "Quantidade Moeda"                      
+                options: {
+                    title: {
+                        display: true,
+                        text: "Quantidade Moeda"
                     }
                 }
-            });
+            }) //colocar o ponto e virgula aqui
         }
     })
 </script>
