@@ -41,8 +41,7 @@
 </table>
 
 <div>
-    
-    <div class="col-lg-6 well" >
+    <div class="col-lg-6 well">
         @await Component.InvokeAsync("Moeda")
     </div>
 
@@ -50,6 +49,10 @@
         <partial name="_Grafico" />
     </div>
 </div>
+
+<div id="test"></div>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
 
 <script>
 
@@ -84,7 +87,7 @@
 
         var cores = [];
 
-        while (quantidade > 0)
+        while (quantidade >= 0)
         {
             var r = Math.floor(Math.random() * 255);
             var g = Math.floor(Math.random() * 255);
@@ -92,7 +95,7 @@
 
             cores.push("rgb(" + r + ", " + g + ", " + b + ")");
 
-            quantidade --;
+            quantidade--;
         }
 
         return cores;
@@ -110,7 +113,7 @@
                         labels: "Quantidade",
                         borderWidth: 2,
                         backgroundColor: pegarCores(dados.length),
-                        data: PegarQuantidade(dados)
+                        data: pegarQuantidade(dados)
                     }]
                 },
                 options: {
@@ -119,7 +122,17 @@
                         text: "Quantidade Moeda"
                     }
                 }
-            }) //colocar o ponto e virgula aqui
+            }); //colocar o ponto e virgula aqui
+        }
+    })
+
+    $.ajax({
+        type : "GET",
+        url : "Moeda/DadosGrafico",
+        success : function(dados){
+            var res = document.getElementById("test");
+            
+            res.innerText = dados;
         }
     })
 </script>

@@ -4,9 +4,10 @@
   "libraries": [
     {
       "library": "Chart.js@2.8.0",
-      "destination": "wwwroot/lib/chartjs",
+      "destination": "wwwroot/lib/Chartjs",
       "files": [
-        "Chart.bundle.min.js"
+        "Chart.bundle.min.js",
+        "Chart.bundle.js"
       ]
     }
   ]

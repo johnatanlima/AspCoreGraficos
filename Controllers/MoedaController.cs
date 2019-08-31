@@ -66,7 +66,7 @@ namespace AspCoreGraficos.Controllers
         //IMPLEMENTAÇÃO
         public JsonResult DadosGrafico()
         {
-            return Json(_context.Moedas.Select(x => new {x.MoedaId, x.Nome}));
+            return Json(_context.Moedas.Select(x => new {x.Nome, x.Quantidade}));
         }
 
         // GET: Moeda/Create
