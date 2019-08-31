@@ -4,11 +4,12 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h2>Index</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Nova Moeda</a>
 </p>
+<!--
 <table class="table">
     <thead>
         <tr>
@@ -39,13 +40,14 @@
 }
     </tbody>
 </table>
+-->
 
-<div>
-    <div class="col-lg-6 well">
+<div class="row">
+    <div class="col-lg-6 card bg-light">
         @await Component.InvokeAsync("Moeda")
     </div>
 
-    <div>
+    <div class="col-lg-6">
         <partial name="_Grafico" />
     </div>
 </div>
@@ -126,13 +128,14 @@
         }
     })
 
-    $.ajax({
+   /* $.ajax({
         type : "GET",
         url : "Moeda/DadosGrafico",
         success : function(dados){
             var res = document.getElementById("test");
-            
-            res.innerText = dados;
+        for(int i; i < dados.length; i++){    
+		res.textContent = dados['nome']['quantidade'];
         }
-    })
+        }
+    })*/
 </script>
